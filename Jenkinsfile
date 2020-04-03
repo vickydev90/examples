@@ -1,21 +1,35 @@
-def label = "worker-${UUID.randomUUID().toString()}"
-
-podTemplate(label: label, containers: [
-  containerTemplate(name: 'gradle', image: 'gradle:4.5.1-jdk9', command: 'cat', ttyEnabled: true)
-]) {
-  node(label) {
-    def myRepo = checkout scm
-    def gitCommit = myRepo.GIT_COMMIT
-    def gitBranch = myRepo.GIT_BRANCH
-    def shortGitCommit = "${gitCommit[0..10]}"
-    def previousGitCommit = sh(script: "git rev-parse ${gitCommit}~", returnStdout: true)
- 
-    stage('bazel') {
-        container('bazel') {
-          sh """
-            pwd
-            bazel build //ios-app
-       }
+pipeline
+{
+    agent {
+        kubernetes {
+           label "jen-agent-${UUID.randomUUID().toString()}"
+           yaml """
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    jenkins: jenkins-pipeline
+spec:
+  containers:
+  - name: jnlp
+    image: jenkins/jnlp-slave
+    ttyEnabled: true
+  - name: bazel
+    image: vickyd/bazel:1.1
+    command:
+    - cat
+    tty: true
+  securityContext:
+    runAsUser: 0
+"""
+        }
     }
-  }
-}
+    stages {
+        stage('bazel') {
+            steps {
+                container('bazel') {
+                    sh 'bazel build //ios-app'
+                 }
+             }
+         }
+      }
