@@ -15,7 +15,7 @@ spec:
     image: jenkins/jnlp-slave
     ttyEnabled: true
   - name: bazel
-    image: vickyd/bazel:1.1
+    image: bazel:1.1
     command:
     - cat
     tty: true
@@ -33,3 +33,4 @@ spec:
              }
          }
       }
+}
