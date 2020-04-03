@@ -28,7 +28,7 @@ spec:
         stage('bazel') {
             steps {
                 container('bazel') {
-                    sh 'bazel build //ios-app'
+                    sh '--version'
                  }
              }
          }
