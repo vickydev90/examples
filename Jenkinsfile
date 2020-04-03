@@ -25,12 +25,14 @@ spec:
         }
     }
     stages {
-        stage('bazel') {
-            steps {
-                container('bazel') {
-                    sh 'bazel build //ios-app'
-                 }
-             }
-         }
+      stage('bazel execute') {
+        steps {
+          container('bazel') {
+            sh """
+              bazel build //ios-app
+            """
+          }
+        }
       }
-}
+    }
+ }
