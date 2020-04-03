@@ -29,7 +29,8 @@ spec:
         steps {
           container('bazel') {
             sh """
-              hostname
+              export PATH=$PATH:/root/bin
+              bazel build //ios-app
             """
           }
         }
