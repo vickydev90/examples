@@ -29,7 +29,7 @@ spec:
         steps {
           container('bazel') {
             sh """
-              bazel build //ios-app
+              hostname
             """
           }
         }
