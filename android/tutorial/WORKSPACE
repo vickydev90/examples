@@ -1,0 +1,5 @@
+android_sdk_repository(
+    name = "androidsdk"
+    path = "/usr/local/android-sdk"
+    )
+

@@ -15,7 +15,7 @@ spec:
     image: jenkins/jnlp-slave
     ttyEnabled: true
   - name: bazel
-    image: bazel:1.1
+    image: bazel:1.2
     command:
     - cat
     tty: true
@@ -27,11 +27,13 @@ spec:
     stages {
       stage('bazel execute') {
         steps {
-          container('bazel') {
+          dir('android/tutorial') {
+            container('bazel') {
             sh """
-              export PATH=$PATH:/root/bin
-              bazel build //ios-app
+              export PATH=$PATH:$HOME/bin
+              bazel build //src/main:app
             """
+            }
           }
         }
       }
