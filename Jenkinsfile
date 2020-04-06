@@ -31,6 +31,7 @@ spec:
             container('bazel') {
             sh """
               export PATH=$PATH:$HOME/bin
+              python -V
               bazel build //src/main:app
             """
             }
