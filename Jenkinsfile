@@ -14,6 +14,11 @@ spec:
   - name: jnlp
     image: jenkins/jnlp-slave
     ttyEnabled: true
+  - name: sonar
+    image: newtmitch/sonar-scanner
+    command:
+    - cat
+    tty: true
   - name: bazel
     image: bazel:1.2
     command:
@@ -25,7 +30,7 @@ spec:
         }
     }
     stages {
-      stage('bazel execute') {
+      /*stage('bazel execute') {
         steps {
           dir('android/tutorial') {
             container('bazel') {
@@ -35,6 +40,15 @@ spec:
               bazel build //src/main:app
             """
             }
+          }
+        }
+      }*/
+      stage('sonarqube') {
+        steps {
+          container('sonar') {
+            sh """
+              sonar-scanner -Dsonar.host.url=http://iron-hamster-sonarqube:9000
+            """
           }
         }
       }
