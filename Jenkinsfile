@@ -47,7 +47,7 @@ spec:
             container('bazel') {
             sh """
               bazel run //:sq -- -Dsonar.host.url=http://35.195.95.9:32040 -Dsonar.login=2b6cd76b654a897ba7d580e60b8f4d2cccd7624a \
-              -Dsonar.exclusions=**/src/*.java
+              -Dsonar.exclusions=**/src/main/java/com/example/*.java
             """
             }
           }
