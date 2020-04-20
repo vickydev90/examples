@@ -1,4 +1,5 @@
 load("//:sonar.bzl", "sonarqube")
+load("//:sonar.bzl", "filegroup")
 load("@rules_java//java:defs.bzl", "java_binary")
 
 java_binary(
