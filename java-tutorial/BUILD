@@ -6,6 +6,21 @@ load("@bazel_sonarqube//:defs.bzl", "sonarqube")
 #    srcs = glob(["src/main/java/com/example/*.java"]),
 #)
 
+filegroup(
+    name = "git",
+    srcs = glob(
+        [".git/**"],
+        exclude = [".git/**/*[*"],  # gitk creates temp files with []
+    ),
+    tags = ["manual"],
+)
+
+filegroup(
+    name = "coverage_report",
+    srcs = ["bazel-out/_coverage/_coverage_report.dat"], # Created manually
+    tags = ["manual"],
+    visibility = ["//visibility:public"],
+)
 
 sonarqube(
     name = "sq",
