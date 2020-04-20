@@ -30,7 +30,6 @@ sonarqube(
         "src/main/java/com/example",
     ],
     targets = [
-        "src/main/java/com/example",
     ],
     modules = {
     },
