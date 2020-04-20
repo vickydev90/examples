@@ -1,5 +1,5 @@
-load("@rules_java//java:defs.bzl", "java_binary")
 load("@bazel_sonarqube//:defs.bzl", "sonarqube")
+load("@rules_java//java:defs.bzl", "java_binary")
 
 java_binary(
     name = "ProjectRunner",
