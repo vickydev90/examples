@@ -9,6 +9,7 @@ http_archive(
     urls = ["https://github.com/Zetten/bazel-sonarqube/archive/7b84f80f5d852cab94e8148cbf2255136078e466.zip"],
 )
 
+load("@bazel_sonarqube//:defs.bzl", "sonarqube")
 
 load("@bazel_sonarqube//:repositories.bzl", "bazel_sonarqube_repositories")
 
