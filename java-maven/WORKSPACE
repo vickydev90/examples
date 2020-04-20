@@ -4,6 +4,25 @@ RULES_JVM_EXTERNAL_TAG = "2.5"
 
 RULES_JVM_EXTERNAL_SHA = "249e8129914be6d987ca57754516be35a14ea866c616041ff0cd32ea94d2f3a1"
 
+load("@rules_jvm_external//:defs.bzl", "maven_install")
+
+maven_install(
+    name = "maven",
+    artifacts = [
+        "org.slf4j:slf4j-api:1.7.26",
+        "org.clapper:grizzled-slf4j_2.12:1.3.4",
+        "ch.qos.logback:logback-classic:1.2.3",
+        "ch.qos.logback:logback-core:1.2.3",
+        "org.scalatest:scalatest_2.12:3.0.5",
+        "org.mockito:mockito-core:2.24.0"
+    ],
+    repositories = [
+        "https://central.maven.org/maven2/",
+        "https://jcenter.bintray.com/"
+    ],
+    fetch_sources = True,
+)
+
 http_archive(
     name = "rules_java",
     url = "https://github.com/bazelbuild/rules_java/releases/download/0.1.1/rules_java-0.1.1.tar.gz",
