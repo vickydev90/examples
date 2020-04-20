@@ -13,22 +13,3 @@ http_archive(
 load("@bazel_sonarqube//:repositories.bzl", "bazel_sonarqube_repositories")
 
 bazel_sonarqube_repositories()
-
-load("@bazel_sonarqube//:defs.bzl", "sonarqube")
-
-sonarqube(
-    name = "sq",
-    project_key = "com.example.project:project",
-    project_name = "My Project",
-    srcs = [
-        "src/main/java/com/example:java_srcs",
-    ],
-    targets = [
-    ],
-    modules = {
-        "//path/to/component:sq_mycomponent": "path/to/component",
-    },
-    coverage_report = ":coverage_report",
-    scm_info = [":git"],
-    tags = ["manual"],
-)
