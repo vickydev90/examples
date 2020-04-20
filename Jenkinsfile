@@ -35,7 +35,7 @@ spec:
           dir('java-tutorial') {
             container('bazel') {
             sh """
-              bazel test <targets> --collect_code_coverage --combined_report=lcov \
+              bazel test coverage_report --collect_code_coverage --combined_report=lcov \
               --coverage_report_generator=@bazel_sonarqube//:sonarqube_coverage_generator
               bazel run //:sq -- -Dsonar.host.url=http://35.195.95.9:32598 -Dsonar.login=1ffbf85c5019383eb582e3d7e43ba9bfae4421c5
             """
