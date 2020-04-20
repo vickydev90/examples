@@ -47,7 +47,7 @@ sonarqube(
     project_key = "com.example.project:project",
     project_name = "My Project",
     srcs = [
-        "src/main/java/",
+        "src/main/java",
     ],
     targets = [
     ],
