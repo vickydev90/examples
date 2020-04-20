@@ -32,9 +32,9 @@ spec:
     stages {
       stage('build') {
         steps {
-          dir ('java-maven/bazel-out/_coverage') {
-            writeFile file:'_coverage_report.dat', text:''
-          }
+      #    dir ('java-maven/bazel-out/_coverage') {
+      #      writeFile file:'_coverage_report.dat', text:''
+      #    }
           
           dir('java-maven') {
             container('bazel') {
