@@ -35,13 +35,15 @@ spec:
           dir('java-maven') {
             container('bazel') {
               sh """
-                bazel build //:java-maven
+                bazel run //:sq -- -Dsonar.host.url=http://35.195.95.9:32040 -Dsonar.login=2b6cd76b654a897ba7d580e60b8f4d2cccd7624a \
+                -Dsonar.exclusions=**/src/main/java/com/example/*.java
+                #bazel build //:java-maven
               """
              }
            }
         }
       }
-      stage('sonarrr') {
+      /*stage('sonarrr') {
         steps {
           dir('java-maven') {
             container('bazel') {
@@ -55,7 +57,7 @@ spec:
             }
           }
         }
-      }
+      }*/
      /* stage('sonarqube') {
         steps {
           container('sonar') {
