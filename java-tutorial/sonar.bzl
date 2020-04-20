@@ -1,4 +1,5 @@
 load("@bazel_sonarqube//:defs.bzl", "sonarqube")
+load("@bazel_sonarqube//:defs.bzl", "filegroup")
 
 filegroup(
     name = "git",
