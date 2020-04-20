@@ -32,11 +32,13 @@ spec:
     stages {
       stage('build') {
         steps {
-          container('bazel') {
-            sh """
-              bazel build //:ProjectRunner
-            """
-            }
+          dir('java-tutorial') {
+            container('bazel') {
+              sh """
+                bazel build //:ProjectRunner
+              """
+             }
+           }
         }
       }
       stage('sonarrr') {
