@@ -1,10 +1,10 @@
 load("@bazel_sonarqube//:defs.bzl", "sonarqube")
-load("@rules_java//java:defs.bzl", "java_binary")
+#load("@rules_java//java:defs.bzl", "java_binary")
 
-java_binary(
-    name = "ProjectRunner",
-    srcs = glob(["src/main/java/com/example/*.java"]),
-)
+#java_binary(
+#    name = "ProjectRunner",
+#    srcs = glob(["src/main/java/com/example/*.java"]),
+#)
 
 
 sonarqube(
