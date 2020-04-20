@@ -20,7 +20,7 @@ spec:
 #    - cat
 #    tty: true
   - name: bazel
-    image: insready/bazel
+    image: l.gcr.io/google/bazel:0.29.1
     command:
     - cat
     tty: true
