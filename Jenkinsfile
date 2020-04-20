@@ -14,11 +14,11 @@ spec:
   - name: jnlp
     image: jenkins/jnlp-slave
     ttyEnabled: true
-  - name: sonar
-    image: newtmitch/sonar-scanner
-    command:
-    - cat
-    tty: true
+#  - name: sonar
+#    image: newtmitch/sonar-scanner
+#    command:
+#    - cat
+#    tty: true
   - name: bazel
     image: insready/bazel
     command:
@@ -30,13 +30,22 @@ spec:
         }
     }
     stages {
-      stage('bazel execute') {
+      stage('build') {
+        steps {
+          container('bazel') {
+            sh """
+              bazel build //:ProjectRunner
+            """
+            }
+        }
+      }
+      stage('sonarrr') {
         steps {
           dir('java-tutorial') {
             container('bazel') {
             sh """
               bazel run //:sq -- -Dsonar.host.url=http://35.195.95.9:32040 -Dsonar.login=2b6cd76b654a897ba7d580e60b8f4d2cccd7624a \
-              -Dsonar.java.binaries=**/target/classes
+              -Dsonar.java.binaries=**/bazel-bin/*.jar
             """
             }
           }
