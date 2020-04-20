@@ -15,12 +15,12 @@ filegroup(
     tags = ["manual"],
 )
 
-filegroup(
+/*filegroup(
     name = "coverage_report",
     srcs = ["bazel-out/_coverage/_coverage_report.dat"], # Created manually
     tags = ["manual"],
     visibility = ["//visibility:public"],
-)
+)*/
 
 sonarqube(
     name = "sq",
@@ -30,6 +30,7 @@ sonarqube(
         "src/main/java/com/example",
     ],
     targets = [
+        "src/main/java/com/example",
     ],
     modules = {
     },
