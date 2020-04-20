@@ -24,7 +24,7 @@ sonarqube(
         "src/main/java/com/example:java_srcs",
     ],
     targets = [
-        "/src/main/java/com/example:package,
+        "/src/main/java/com/example/:package,
     ],
     modules = {
         "//path/to/component:sq_mycomponent": "path/to/component",
