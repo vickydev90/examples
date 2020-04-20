@@ -24,3 +24,16 @@ maven_install(
         "https://jcenter.bintray.com/",
     ],
 )
+
+http_archive(
+    name = "bazel_sonarqube",
+    sha256 = "336b9b9953257d927ba74ff9423f21b4d406be48dfcb7dc9ab21adedbc91709d",
+    strip_prefix = "bazel-sonarqube-7b84f80f5d852cab94e8148cbf2255136078e466",
+    urls = ["https://github.com/Zetten/bazel-sonarqube/archive/7b84f80f5d852cab94e8148cbf2255136078e466.zip"],
+)
+
+load("@bazel_sonarqube//:defs.bzl", "sonarqube")
+
+load("@bazel_sonarqube//:repositories.bzl", "bazel_sonarqube_repositories")
+
+bazel_sonarqube_repositories()
