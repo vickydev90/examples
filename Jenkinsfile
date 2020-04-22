@@ -63,11 +63,13 @@ spec:
       }*/
       stage('sonarqube') {
         steps {
-          withSonarQubeEnv('sonarqube') {
-            container('sonar') {
-              sh """
-                sonar-scanner
-              """
+          dir('java-maven') {  
+            withSonarQubeEnv('sonarqube') {
+              container('sonar') {
+                sh """
+                  sonar-scanner
+                """
+              }
             }
           }
         }
