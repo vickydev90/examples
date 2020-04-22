@@ -43,7 +43,7 @@ spec:
                 --coverage_report_generator=@bazel_sonarqube//:sonarqube_coverage_generator
   
                 bazel run //:sq -- -Dsonar.host.url=http://35.205.100.49:30686 -Dsonar.login=0e574110afe2fb2c5ac6a70d447752a648055a44 \
-                -Dsonar.exclusions=**/src/main/java/com/example/*.java
+                -Dsonar.java.source=11
                 #bazel build //:java-maven
               """
              }
