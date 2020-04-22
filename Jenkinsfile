@@ -42,8 +42,7 @@ spec:
                 bazel test //:tests --collect_code_coverage --combined_report=lcov \
                 --coverage_report_generator=@bazel_sonarqube//:sonarqube_coverage_generator
   
-                bazel run //:sq -- -Dsonar.host.url=http://35.205.100.49:30686 -Dsonar.login=0e574110afe2fb2c5ac6a70d447752a648055a44 \
-                -Dsonar.java.source=11
+                bazel run //:sq -- -Dsonar.java.source=11 -Dsonar.java.binaries=bazel-bin
                 #bazel build //:java-maven
               """
              }
