@@ -14,11 +14,11 @@ spec:
   - name: jnlp
     image: jenkins/jnlp-slave
     ttyEnabled: true
-#  - name: sonar
-#    image: newtmitch/sonar-scanner
-#    command:
-#    - cat
-#    tty: true
+  - name: sonar
+    image: newtmitch/sonar-scanner
+    command:
+    - cat
+    tty: true
   - name: bazel
     image: l.gcr.io/google/bazel:0.29.1
     command:
