@@ -32,12 +32,12 @@ spec:
     stages {
       stage('build') {
         steps {
-          dir ('java-maven/bazel-out/_coverage') {
+          /*dir ('java-maven/bazel-out/_coverage') {
             writeFile file:'_coverage_report.dat', text:''
               sh 'chmod 755 _coverage_report.dat'
-          }
+          }*/
           
-          /*dir('java-maven') {
+          dir('java-maven') {
             container('bazel') {
               sh """
                 bazel test //:tests --collect_code_coverage --combined_report=lcov \
@@ -45,7 +45,7 @@ spec:
                 #bazel build //:java-maven
               """
              }
-           }*/
+           }
         }
       }
       stage('sonarrr') {
@@ -54,7 +54,6 @@ spec:
             withSonarQubeEnv('sonarqube') {
               container('bazel') {
                 sh """
-                  bazel coverage //:sq
                   bazel run //:sq -- -Dsonar.java.source=11
                 """
               }
