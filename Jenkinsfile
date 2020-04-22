@@ -30,11 +30,11 @@ spec:
         }
     }
     stages {
-      stage('build') {
+      /*stage('build') {
         steps {
-          /*dir ('java-maven/bazel-out/_coverage') {
+          dir ('java-maven/bazel-out/_coverage') {
             writeFile file:'_coverage_report.dat', text:''
-          }*/
+          }
           
           dir('java-maven') {
             container('bazel') {
@@ -46,14 +46,14 @@ spec:
              }
            }
         }
-      }
+      }*/
       stage('sonarrr') {
         steps {
           dir('java-maven') {
             withSonarQubeEnv('sonarqube') {
               container('bazel') {
                 sh """
-                  bazel run //:sq -- -Dsonar.java.source=11 -Dsonar.java.binaries=bazel-bin
+                  bazel run //:sq -- -Dsonar.java.source=11
                 """
               }
             }
