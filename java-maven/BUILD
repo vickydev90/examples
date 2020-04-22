@@ -50,7 +50,6 @@ sonarqube(
         "src/main/java",
     ],
     targets = [
-        "bazel-bin",
     ],
     modules = {
     },
