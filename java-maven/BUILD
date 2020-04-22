@@ -50,6 +50,7 @@ sonarqube(
         "src/main/java",
     ],
     targets = [
+        "bazel-out/_coverage/_coverage_report.dat"
     ],
     modules = {
     },
