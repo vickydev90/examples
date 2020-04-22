@@ -39,7 +39,7 @@ spec:
           dir('java-maven') {
             container('bazel') {
               sh """
-                bazel test //:sq --collect_code_coverage --combined_report=lcov \
+                bazel test //:tests --collect_code_coverage --combined_report=lcov \
                 --coverage_report_generator=@bazel_sonarqube//:sonarqube_coverage_generator
   
                 bazel run //:sq -- -Dsonar.host.url=http://35.205.100.49:30686 -Dsonar.login=0e574110afe2fb2c5ac6a70d447752a648055a44 \
