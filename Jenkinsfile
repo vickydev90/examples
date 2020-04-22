@@ -50,7 +50,7 @@ spec:
       stage('sonarrr') {
         steps {
           dir('java-maven') {
-            withSonarQubeEnv('sonarqube') 
+            withSonarQubeEnv('sonarqube') {
               container('bazel') {
                 sh """
                   bazel run //:sq -- -Dsonar.java.source=11 -Dsonar.java.binaries=bazel-bin
