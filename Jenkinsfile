@@ -41,26 +41,25 @@ spec:
               sh """
                 bazel test //:tests --collect_code_coverage --combined_report=lcov \
                 --coverage_report_generator=@bazel_sonarqube//:sonarqube_coverage_generator
-  
-                bazel run //:sq -- -Dsonar.java.source=11 -Dsonar.java.binaries=bazel-bin
                 #bazel build //:java-maven
               """
              }
            }
         }
       }
-      /*stage('sonarrr') {
+      stage('sonarrr') {
         steps {
           dir('java-maven') {
-            container('bazel') {
-            sh """
-              bazel test :tests --collect_code_coverage --combined_report=lcov \
-              --coverage_report_generator=@bazel_sonarqube//:sonarqube_coverage_generator
-            """
+            withSonarQubeEnv('sonarqube') 
+              container('bazel') {
+                sh """
+                  bazel run //:sq -- -Dsonar.java.source=11 -Dsonar.java.binaries=bazel-bin
+                """
+              }
             }
           }
         }
-      }*/
+      }
      /* stage('sonarqube') {
         steps {
           container('sonar') {
