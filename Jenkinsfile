@@ -1,12 +1,12 @@
 pipeline
 {
-    agent {
-        parameters {
+    parameters {
           choice(
             name: 'Environment',
             choices: "Testing\nStaging",
             description: 'Environment name to deploy' )
-        }
+    }
+    agent {
         kubernetes {
            label "jen-agent-${UUID.randomUUID().toString()}"
            yaml """
