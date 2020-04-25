@@ -1,7 +1,12 @@
 pipeline
 {
-    properties([parameters([choice(choices: ['Testting', 'Staging'], description: 'Environment name to deploy', name: 'Build_Env')])])
     agent {
+        parameters {
+          choice(
+            name: 'Environment'
+            choices: "Testing\nStaging",
+            description: 'Environment name to deploy' )
+        }
         kubernetes {
            label "jen-agent-${UUID.randomUUID().toString()}"
            yaml """
