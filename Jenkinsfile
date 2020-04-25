@@ -3,7 +3,7 @@ pipeline
     agent {
         parameters {
           choice(
-            name: 'Environment'
+            name: 'Environment',
             choices: "Testing\nStaging",
             description: 'Environment name to deploy' )
         }
