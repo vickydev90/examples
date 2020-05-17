@@ -20,6 +20,11 @@ spec:
   - name: jnlp
     image: jenkins/jnlp-slave
     ttyEnabled: true
+  - name: jenk_bazel
+    image: vickyd/jenk_bazel:v1.1
+    command:
+    - cat
+    tty: true
   - name: sonar
     image: newtmitch/sonar-scanner
     command:
