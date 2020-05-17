@@ -22,6 +22,8 @@ spec:
     ttyEnabled: true
   - name: jenk-bazel
     image: vickyd/jenk_bazel:v1.1
+  imagePullSecrets:
+  - name: regcred
     command:
     - cat
     tty: true 
@@ -37,8 +39,6 @@ spec:
     tty: true
   securityContext:
     runAsUser: 0
-  imagePullSecrets:
-  - name: regcred
 """
         }
     }
