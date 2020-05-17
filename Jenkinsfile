@@ -24,7 +24,7 @@ spec:
     image: vickyd/jenk_bazel:v1.1
     command:
     - cat
-    tty: true
+    tty: true 
   - name: sonar
     image: newtmitch/sonar-scanner
     command:
@@ -37,6 +37,8 @@ spec:
     tty: true
   securityContext:
     runAsUser: 0
+  imagePullSecrets:
+  - name: regcred
 """
         }
     }
