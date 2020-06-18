@@ -51,7 +51,7 @@ spec:
     }
     post {
     always {
-      sendNotifi(currentBuild.result, channel: #general)
+      sendNotifi(currentBuild.result, channel: '#general')
     }
   }
 }
