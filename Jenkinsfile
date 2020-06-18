@@ -51,7 +51,7 @@ spec:
     }
     post {
     always {
-      sendNotifi(currentBuild.result, #kodekloud)
+      sendNotifi(currentBuild.result, '#kodekloud')
     }
   }
 }
