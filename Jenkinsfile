@@ -19,11 +19,6 @@ spec:
     command:
     - cat
     tty: true
-  - name: bazel
-    image: bazel:1.2
-    command:
-    - cat
-    tty: true
   securityContext:
     runAsUser: 0
 """
