@@ -26,7 +26,7 @@ spec:
         }
     }
     stages {
-      /*stage('bazel execute') {
+      stage('bazel execute') {
         steps {
           dir('android/tutorial') {
             container('bazel') {
@@ -38,8 +38,8 @@ spec:
             }
           }
         }
-      }*/
-      /*stage('sonarqube') {
+      }
+      stage('sonarqube') {
         steps {
           container('sonar') {
             sh """
@@ -47,7 +47,7 @@ spec:
             """
           }
         }
-      }*/
+      }
     }
     post {
     always {
