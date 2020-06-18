@@ -38,7 +38,7 @@ spec:
             }
           }
         }
-      }*/
+      }
       stage('sonarqube') {
         steps {
           container('sonar') {
@@ -48,7 +48,7 @@ spec:
           }
         }
       }
-    }
+    }*/
     post {
     always {
       sendNotifi(currentBuild.result)
