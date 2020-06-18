@@ -1,3 +1,4 @@
+@Library('shared-lib')_
 pipeline
 {
     agent {
@@ -48,4 +49,9 @@ spec:
         }
       }
     }
- }
+    post {
+    always {
+      sendNotifi currentBuild.result
+    }
+  }
+}
