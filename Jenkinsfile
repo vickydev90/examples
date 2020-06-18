@@ -38,8 +38,8 @@ spec:
             }
           }
         }
-      }
-      stage('sonarqube') {
+      }*/
+      /*stage('sonarqube') {
         steps {
           container('sonar') {
             sh """
