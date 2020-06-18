@@ -47,8 +47,8 @@ spec:
             """
           }
         }
-      }
-    }*/
+      }*/
+    }
     post {
     always {
       sendNotifi(currentBuild.result)
