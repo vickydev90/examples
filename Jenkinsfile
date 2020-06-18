@@ -51,7 +51,7 @@ spec:
     }
     post {
     always {
-      sendNotifi(currentBuild.result, channel: '#kodekloud')
+      sendNotifi(buildStatus: currentBuild.result, buildFailChannel: '#kodekloud')
     }
   }
 }
