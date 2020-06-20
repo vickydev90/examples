@@ -3,9 +3,9 @@
 pipeline
 {
     agent {
+        load "staging.groovy"
         kubernetes {
            label "jen-agent-${UUID.randomUUID().toString()}"
-           load "staging.groovy"
            yaml """
 apiVersion: v1
 kind: Pod
