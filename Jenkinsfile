@@ -28,8 +28,8 @@ spec:
     }
     stages {
       stage('env variables'){
-        load "staging.groovy"
         steps {
+        load "staging.groovy"
         sh """
           echo $BAZEL_TOOLS
         """
