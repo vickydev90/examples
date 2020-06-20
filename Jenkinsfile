@@ -30,7 +30,7 @@ spec:
       stage('env from shared') {
         steps {
           script {
-            def path = "${workspace}/staging.properties"
+            def path = "staging.properties"
             loadEnv(path)
           sh """ echo $BAZEL_TOOLS """
          }
