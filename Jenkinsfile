@@ -29,7 +29,8 @@ spec:
     stages {
       stage('env from shared') {
         script {
-        def path = "staging.properties"
+          def path = "staging.properties"
+        }
         steps {
           loadEnv(path)
           sh """ 
@@ -37,7 +38,6 @@ spec:
           """
          }
        }
-     }
      /* stage('env variables') {
         steps {
         load "staging.groovy"
