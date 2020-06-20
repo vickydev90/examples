@@ -30,14 +30,14 @@ spec:
       stage('env from shared') {
         script {
         def path = "staging.properties"
-        }
         steps {
           loadEnv(path)
           sh """ 
           echo $BAZEL_TOOLS
           """
-        }
-      }
+         }
+       }
+     }
      /* stage('env variables') {
         steps {
         load "staging.groovy"
