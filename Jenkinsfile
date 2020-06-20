@@ -28,7 +28,9 @@ spec:
     }
     stages {
       stage('env from shared') {
+        script {
         def path = "staging.properties"
+        }
         steps {
           loadEnv(path)
           sh """ 
