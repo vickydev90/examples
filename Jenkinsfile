@@ -28,8 +28,9 @@ spec:
     }
     stages {
       stage('env from shared') {
+        def path = "staging.properties"
         steps {
-          loadEnv("staging.properties")
+          loadEnv(path)
           sh """ 
           echo $BAZEL_TOOLS
           """
