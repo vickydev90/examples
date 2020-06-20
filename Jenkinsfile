@@ -2,7 +2,6 @@
 
 pipeline
 {
-    load "staging.groovy"
     agent {
         kubernetes {
            label "jen-agent-${UUID.randomUUID().toString()}"
@@ -28,6 +27,7 @@ spec:
         }
     }
     stages {
+      load "staging.groovy"
       stage('env variables'){
         steps {
         sh """
