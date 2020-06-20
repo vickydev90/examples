@@ -1,9 +1,11 @@
-@Library('shared-lib')_
+/*@Library('shared-lib')_ */
+
 pipeline
 {
     agent {
         kubernetes {
            label "jen-agent-${UUID.randomUUID().toString()}"
+           load "staging.groovy"
            yaml """
 apiVersion: v1
 kind: Pod
@@ -26,7 +28,14 @@ spec:
         }
     }
     stages {
-      stage('bazel execute') {
+      stage('env variables'){
+        steps {
+        sh """
+          echo $BAZEL_TOOLS
+        """
+        }
+      }
+      /*stage('bazel execute') {
         steps {
           dir('android/tutorial') {
             container('bazel') {
@@ -47,11 +56,11 @@ spec:
             """
           }
         }
-      }
+      }*/
     }
-    post {
+    /*post {
     always {
       sendNotifi(buildStatus: currentBuild.result, buildFailChannel: '#general')
     }
-  }
+  }*/
 }
