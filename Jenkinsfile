@@ -27,7 +27,7 @@ spec:
         }
     }
     stages {
-      stage('env from shared') {
+      /*stage('env from shared') {
         steps {
           script {
             def path = "${workspace}/examples/staging.properties"
@@ -35,8 +35,8 @@ spec:
           sh """ echo $BAZEL_TOOLS """
          }
         }
-       }
-     /* stage('env variables') {
+       }*/
+      stage('env variables') {
         steps {
         load "staging.groovy"
         sh """
