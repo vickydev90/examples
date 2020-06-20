@@ -1,4 +1,4 @@
-/*@Library('shared-lib')_ */
+@Library('shared-lib')_
 
 pipeline
 {
@@ -27,7 +27,16 @@ spec:
         }
     }
     stages {
-      stage('env variables'){
+      stage('env from shared') {
+        steps {
+          path = "staging.properties"
+          loadEnv(path)
+          sh """ 
+          echo $BAZEL_TOOLS
+          """
+        }
+      }
+     /* stage('env variables') {
         steps {
         load "staging.groovy"
         sh """
@@ -35,7 +44,7 @@ spec:
         """
         }
       }
-      /*stage('bazel execute') {
+      stage('bazel execute') {
         steps {
           dir('android/tutorial') {
             container('bazel') {
