@@ -29,8 +29,7 @@ spec:
     stages {
       stage('env from shared') {
         steps {
-          sh "path = "staging.properties""
-          loadEnv(path)
+          loadEnv("staging.properties")
           sh """ 
           echo $BAZEL_TOOLS
           """
