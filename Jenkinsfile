@@ -44,7 +44,7 @@ spec:
         """
         }
       }
-      stage('bazel execute') {
+      /*stage('bazel execute') {
         steps {
           dir('android/tutorial') {
             container('bazel') {
