@@ -22,11 +22,8 @@ spec:
 node(POD_LABEL) {
     checkout scm
     stage('Env variables') {
-        //def path = "staging.properties"
-      script {
-        sh "ls -lrth"
-        //loadEnv(configFile: "${WORKSPACE}/staging.properties")
-        loadEnv()
+      configFileProvider([configFile(fileId: 'env-json', variable: 'BAZEL_TOOLS')]) { 
+         sh "cat ${env.BAZEL_TOOLS}"    
       }
     }
   }
