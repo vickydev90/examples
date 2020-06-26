@@ -25,7 +25,8 @@ node(POD_LABEL) {
         //def path = "staging.properties"
       script {
         sh "ls -lrth"
-        loadEnv(configFile: "${WORKSPACE}/staging.properties")
+        //loadEnv(configFile: "${WORKSPACE}/staging.properties")
+        loadEnv()
       }
     }
   }
