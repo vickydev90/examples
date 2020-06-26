@@ -21,7 +21,9 @@ spec:
 ) {
 node(POD_LABEL) {
     stage{
-        checkout scm
+        steps{
+            checkout scm
+        }
     }
     stage('Env variables') {
         path = "${workspace}/staging.properties"
