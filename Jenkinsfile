@@ -24,7 +24,7 @@ node(POD_LABEL) {
     stage('Env variables') {
         //def path = "staging.properties"
         sh "ls -lrth"
-        loadEnv(configFile: "${workspace}/staging.properties")
+        loadEnv(configFile: "staging.properties")
     }
   }
 }
