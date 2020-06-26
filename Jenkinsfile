@@ -25,6 +25,7 @@ node(POD_LABEL) {
       configFileProvider([configFile(fileId: 'en-var', variable: 'BAZEL_TOOLS')]) { 
          sh "cat ${env.BAZEL_TOOLS}"    
       }
+      sh "cat ${env.BAZEL_TOOLS}"
     }
   }
 }
