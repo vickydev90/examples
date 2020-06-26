@@ -23,8 +23,10 @@ node(POD_LABEL) {
     checkout scm
     stage('Env variables') {
         //def path = "staging.properties"
+      script {
         sh "ls -lrth"
         loadEnv(configFile: "staging.properties")
+      }
     }
   }
 }
