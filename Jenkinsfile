@@ -22,10 +22,9 @@ spec:
 node(POD_LABEL) {
     checkout scm
     stage('Env variables') {
-      configFileProvider([configFile(fileId: 'en-var', variable: 'BAZEL_TOOLS')]) { 
-         sh "cat ${env.BAZEL_TOOLS}"    
+      loadEnv()
+      //configFileProvider([configFile(fileId: 'en-var', variable: 'BAZEL_TOOLS')]) { 
+      //   sh "cat ${env.BAZEL_TOOLS}"    
       }
-      sh "cat ${env.BAZEL_TOOLS}"
-    }
   }
 }
