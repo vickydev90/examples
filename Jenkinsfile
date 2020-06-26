@@ -22,7 +22,8 @@ spec:
 node(POD_LABEL) {
     checkout scm
     stage('Env variables') {
-        path = "${workspace}/examples/staging.properties"
+        //path = "${workspace}/examples/staging.properties"
+        sh "ls -lrth"
         loadEnv(path)
     }
   }
