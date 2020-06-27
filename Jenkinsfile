@@ -8,7 +8,7 @@ def loadProperties() {
         properties = new Properties()
         File propertiesFile = new File("${workspace}/staging.properties")
         properties.load(propertiesFile.newDataInputStream())
-        echo "${BAZEL_TOOLS}"
+        echo "${properties.BAZEL_TOOLS}"
     }
 }
 
@@ -34,7 +34,8 @@ spec:
 
 node(POD_LABEL) {
   stage('Env variables') {
-      echo "${BAZEL_TOOLS}"
+      loadProperties()
+      echo "${properties.BAZEL_TOOLS}"
     //loadEnv(envFile: "${env.WORKSPACE}/staging.properties")
     //loadEnv()
     }
