@@ -12,7 +12,7 @@ def loadProperties() {
         Set<Object> keys = properties.keySet();
         for(Object k:keys) {
           String key = (String)k;
-          String value = (String) properties.getProperties();
+          String value = (String) properties.getProperties(key);
           env."${key}" = "${value}"
           //echo "Immediate one ${BAZEL_TOOLS}"
   }
@@ -32,13 +32,6 @@ pipeline {
                 }
             }
         }
-        stage('Build') {
-            agent { label 'master'  }
-
-            steps {
-                // works fine. properties is available everywhere
-                echo properties.BAZEL_TOOLS
-            }           
-        }
+        
     }
 }
