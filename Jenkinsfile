@@ -3,8 +3,8 @@
 properties = null     
 
 def loadProperties() {
-    node {
-        checkout scm
+    //node {
+     //   checkout scm
         properties = new Properties()
         File propertiesFile = new File("${workspace}/staging.properties")
         properties.load(propertiesFile.newDataInputStream())
@@ -14,7 +14,6 @@ def loadProperties() {
         String value =(String) properties.getProperty(key)
         env."${key}" = "${value}"
         echo "Immediate one ${BAZEL_TOOLS}"
-    }
   }
 }
 
