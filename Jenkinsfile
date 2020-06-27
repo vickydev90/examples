@@ -22,7 +22,6 @@ spec:
 node(POD_LABEL) {
     checkout scm
     stage('Env variables') {
-      sh "pwd"
       sh "ls -lrth"
       loadEnv()
       //configFileProvider([configFile(fileId: 'en-var', variable: 'BAZEL_TOOLS')]) { 
