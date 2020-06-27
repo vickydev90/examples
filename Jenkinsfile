@@ -52,7 +52,7 @@ spec:
         steps {
         //load "staging.groovy"
         sh """
-          echo "test"
+          echo "${properties.BAZEL_TOOLS}"
         """
         }
       }
