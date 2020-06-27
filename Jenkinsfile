@@ -14,7 +14,7 @@ def loadProperties() {
           String key = (String)k;
           String value = (String) properties.getProperties();
           env."${key}" = "${value}"
-          echo "Immediate one ${BAZEL_TOOLS}"
+          //echo "Immediate one ${BAZEL_TOOLS}"
   }
 }
 
