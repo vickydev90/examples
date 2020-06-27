@@ -47,15 +47,15 @@ spec:
           sh """ echo $BAZEL_TOOLS """
          }
         }
-       }
+       }*/
       stage('env variables') {
         steps {
-        load "staging.groovy"
+        //load "staging.groovy"
         sh """
-          echo $BAZEL_TOOLS
+          echo ${BAZEL_TOOLS}
         """
         }
-      }*/
+      }
       /*stage('bazel execute') {
         steps {
           dir('android/tutorial') {
