@@ -5,9 +5,10 @@ properties = null
 def loadProperties() {
     //node {
      //   checkout scm
-        properties = new Properties()
-        File propertiesFile = new File("${workspace}/staging.properties")
-        properties.load(propertiesFile.newDataInputStream())
+        //properties = new Properties()
+        //File propertiesFile = new File("${workspace}/staging.properties")
+        //properties.load(propertiesFile.newDataInputStream())
+        properties = readProperties file: 'staging.properties'
         Set<Object> keys = properties.keySet();
         for(Object k:keys){
         String key = (String)k;
