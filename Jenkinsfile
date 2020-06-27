@@ -8,6 +8,11 @@ def loadProperties() {
         properties = new Properties()
         File propertiesFile = new File("${workspace}/staging.properties")
         properties.load(propertiesFile.newDataInputStream())
+        Set<Object> keys = properties.keySet();
+        for(Object k:keys){
+        String key = (String)k;
+        String value =(String) properties.getProperty(key)
+        env."${key}" = "${value}"
         echo "Immediate one ${properties.BAZEL_TOOLS}"
     }
 }
