@@ -50,10 +50,11 @@ spec:
        }*/
       stage('env variables') {
         steps {
+          loadProperties()
         //load "staging.groovy"
-        sh """
-          echo "${properties.BAZEL_TOOLS}"
-        """
+          sh """
+            echo "${properties.BAZEL_TOOLS}"
+          """
         }
       }
       /*stage('bazel execute') {
