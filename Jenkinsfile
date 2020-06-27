@@ -13,8 +13,9 @@ def loadProperties() {
         String key = (String)k;
         String value =(String) properties.getProperty(key)
         env."${key}" = "${value}"
-        echo "Immediate one ${properties.BAZEL_TOOLS}"
+        echo "Immediate one ${BAZEL_TOOLS}"
     }
+  }
 }
 
 pipeline {
@@ -27,7 +28,7 @@ pipeline {
             steps {
                 script {
                     loadProperties()
-                    echo "Later one ${properties.BAZEL_TOOLS}"
+                    echo "Later one ${BAZEL_TOOLS}"
                 }
             }
         }
