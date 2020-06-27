@@ -23,7 +23,7 @@ node(POD_LABEL) {
     checkout scm
     stage('Env variables') {
       sh "ls -lrth"
-      loadEnv()
+      loadEnv(envFile: "${env.WORKSPACE}/staging.properties")
       //configFileProvider([configFile(fileId: 'en-var', variable: 'BAZEL_TOOLS')]) { 
       //   sh "cat ${env.BAZEL_TOOLS}"    
       }
