@@ -10,11 +10,11 @@ def loadProperties() {
         //properties.load(propertiesFile.newDataInputStream())
         properties = readProperties file: 'staging.properties'
         Set<Object> keys = properties.keySet();
-        for(Object k:keys){
-        String key = (String)k;
-        String value = (String) properties.getProperties(key);
-        env."${key}" = "${value}"
-        echo "Immediate one ${BAZEL_TOOLS}"
+        for(Object k:keys) {
+          String key = (String)k;
+          String value = (String) properties.getProperties(key);
+          env."${key}" = "${value}"
+          echo "Immediate one ${BAZEL_TOOLS}"
   }
 }
 
