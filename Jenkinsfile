@@ -2,7 +2,7 @@
 
 properties = null     
 
-def loadProperties(closure) {
+def loadProperties() {
     //node {
      //   checkout scm
         //properties = new Properties()
