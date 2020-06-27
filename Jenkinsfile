@@ -1,5 +1,17 @@
 @Library('shared-lib')_
 
+properties = null     
+
+def loadProperties() {
+    node {
+        checkout scm
+        properties = new Properties()
+        File propertiesFile = new File("${workspace}/staging.properties")
+        properties.load(propertiesFile.newDataInputStream())
+        echo "${BAZEL_TOOLS}"
+    }
+}
+
 podTemplate(yaml: """
 kind: Pod
 metadata:
@@ -21,18 +33,10 @@ spec:
 ) {
 
 node(POD_LABEL) {
-  checkout scm
   stage('Env variables') {
-    properties = null     
-    def loadProperties() {
-      properties = new Properties()
-      File propertiesFile = new File("${workspace}/staging.properties")
-      properties.load(propertiesFile.newDataInputStream())
       echo "${BAZEL_TOOLS}"
     //loadEnv(envFile: "${env.WORKSPACE}/staging.properties")
     //loadEnv()
     }
-    sh "echo ${BAZEL_TOOLS}"
   }
-}
 }
