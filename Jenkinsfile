@@ -19,21 +19,20 @@ spec:
     runAsUser: 0
 """
 ) {
-properties = null     
 
-def loadProperties() {
-    node(POD_LABEL) {
-        checkout scm
-        properties = new Properties()
-        File propertiesFile = new File("${workspace}/staging.properties")
-        properties.load(propertiesFile.newDataInputStream())
-        echo "${BAZEL_TOOLS}"
+node(POD_LABEL) {
+  checkout scm
+  stage('Env variables') {
+    properties = null     
+    def loadProperties() {
+      properties = new Properties()
+      File propertiesFile = new File("${workspace}/staging.properties")
+      properties.load(propertiesFile.newDataInputStream())
+      echo "${BAZEL_TOOLS}"
+    //loadEnv(envFile: "${env.WORKSPACE}/staging.properties")
+    //loadEnv()
     }
+    sh "echo ${BAZEL_TOOLS}"
   }
 }
-//node(POD_LABEL) {
-//    checkout scm
-//    stage('Env variables') {
-      //loadEnv(envFile: "${env.WORKSPACE}/staging.properties")
-//      loadEnv()
-//      sh "echo ${BAZEL_TOOLS}"
+}
