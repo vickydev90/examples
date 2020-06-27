@@ -22,8 +22,8 @@ spec:
 node(POD_LABEL) {
     checkout scm
     stage('Env variables') {
-      loadEnv(envFile: "${env.WORKSPACE}/staging.properties")
-      //loadEnv()
+      //loadEnv(envFile: "${env.WORKSPACE}/staging.properties")
+      loadEnv()
       sh "echo ${env.BAZEL_TOOLS}"
       }
   }
