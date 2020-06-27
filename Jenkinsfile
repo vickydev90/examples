@@ -12,7 +12,13 @@ def loadProperties() {
     }
 }
 
-podTemplate(yaml: """
+pipeline
+{
+    agent {
+        kubernetes {
+           label "jen-agent-${UUID.randomUUID().toString()}"
+           yaml """
+apiVersion: v1
 kind: Pod
 metadata:
   labels:
@@ -30,14 +36,52 @@ spec:
   securityContext:
     runAsUser: 0
 """
-) {
-
-node(POD_LABEL) {
-  stage('Env variables') {
-      loadProperties()
-      echo "${properties.BAZEL_TOOLS}"
-    //loadEnv(envFile: "${env.WORKSPACE}/staging.properties")
-    //loadEnv()
+        }
     }
-  }
+    stages {
+      /*stage('env from shared') {
+        steps {
+          script {
+            def path = "${workspace}/examples/staging.properties"
+            loadEnv(path)
+          sh """ echo $BAZEL_TOOLS """
+         }
+        }
+       }
+      stage('env variables') {
+        steps {
+        load "staging.groovy"
+        sh """
+          echo $BAZEL_TOOLS
+        """
+        }
+      }*/
+      /*stage('bazel execute') {
+        steps {
+          dir('android/tutorial') {
+            container('bazel') {
+            sh """
+              export PATH=$PATH:$HOME/bin
+              python -V
+              bazel build //src/main:app
+            """
+            }
+          }
+        }
+      }
+      stage('sonarqube') {
+        steps {
+          container('sonar') {
+            sh """
+              sonar-scanner -Dsonar.host.url=http://iron-hamster-sonarqube:9000
+            """
+          }
+        }
+      }*/
+    }
+    /*post {
+    always {
+      sendNotifi(buildStatus: currentBuild.result, buildFailChannel: '#general')
+    }
+  }*/
 }
