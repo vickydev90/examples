@@ -24,7 +24,7 @@ node(POD_LABEL) {
     stage('Env variables') {
       //loadEnv(envFile: "${env.WORKSPACE}/staging.properties")
       loadEnv()
-      sh "echo $BAZEL_TOOLS"
+      sh "echo ${env.BAZEL_TOOLS}"
       }
   }
 }
