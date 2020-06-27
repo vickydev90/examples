@@ -22,9 +22,9 @@ spec:
 node(POD_LABEL) {
     checkout scm
     stage('Env variables') {
-      sh "ls -lrth"
       //loadEnv(envFile: "${env.WORKSPACE}/staging.properties")
       loadEnv()
+      sh "echo $BAZEL_TOOLS"
       }
   }
 }
