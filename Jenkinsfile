@@ -31,7 +31,7 @@ spec:
 
 node(POD_LABEL) {
   stage('Env variables') {
-    loadEnv("${env.WORKSPACE}/staging.properties")
+    loadEnvironmentVariables("${env.WORKSPACE}/staging.properties")
     //loadEnv()
     echo "${BAZEL_TOOLS}"
     }
