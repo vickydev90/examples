@@ -27,5 +27,8 @@ node(POD_LABEL) {
     loadEnv(envFile: "${env.WORKSPACE}/staging.properties")
     echo "${BAZEL_TOOLS}"
     }
+  stage(variables) {
+    echo "${JFROG_URL}"
+  }
   }
 }
