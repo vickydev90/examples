@@ -1,37 +1,30 @@
-//@Library('shared-lib')_
+@Library('shared-lib')_
 
-properties = null     
+podTemplate(yaml: """
+kind: Pod
+metadata:
+  labels:
+    jenkins: jenkins-pipeline
+spec:
+  containers:
+  - name: jnlp
+    image: jenkins/jnlp-slave
+    ttyEnabled: true
+  - name: sonar
+    image: newtmitch/sonar-scanner
+    command:
+    - cat
+    tty: true
+  securityContext:
+    runAsUser: 0
+"""
+) {
 
-def loadProperties() {
-    //node {
-     //   checkout scm
-        properties = new Properties()
-        File propertiesFile = new File("${workspace}/staging.properties")
-        properties.load(propertiesFile.newDataInputStream())
-        //properties = readProperties file: 'staging.properties'
-        Set<Object> keys = properties.keySet();
-        for(Object k:keys) {
-          String key = (String)k;
-          String value = (String) properties.getProperties(key);
-          env."${key}" = "${value}"
-          //echo "Immediate one ${BAZEL_TOOLS}"
-  }
-}
-
-pipeline {
-    agent none
-
-    stages {
-        stage ('prepare') {
-            agent any
-
-            steps {
-                script {
-                    loadProperties()
-                    echo "Later one ${BAZEL_TOOLS}"
-                }
-            }
-        }
-        
+node(POD_LABEL) {
+  stage('Env variables') {
+    //loadEnv(envFile: "${env.WORKSPACE}/staging.properties")
+    loadEnv()
+    echo "${properties.BAZEL_TOOLS}"
     }
+  }
 }
