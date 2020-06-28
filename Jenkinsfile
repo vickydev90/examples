@@ -30,6 +30,7 @@ spec:
 ) {
 
 node(POD_LABEL) {
+  checkout scm
   stage('Env variables') {
     loadEnvironmentVariables("staging.properties")
     //loadEnv()
