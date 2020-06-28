@@ -1,5 +1,14 @@
 @Library('shared-lib')_
 
+def loadEnvironmentVariables(path){
+    def props = readProperties  file: path
+    keys= props.keySet()
+    for(key in keys) {
+        value = props["${key}"]
+        env."${key}" = "${value}"
+    }
+}
+
 podTemplate(yaml: """
 kind: Pod
 metadata:
@@ -22,9 +31,9 @@ spec:
 
 node(POD_LABEL) {
   stage('Env variables') {
-    //loadEnv(envFile: "${env.WORKSPACE}/staging.properties")
-    loadEnv()
-    echo "${properties.BAZEL_TOOLS}"
+    loadEnv("${env.WORKSPACE}/staging.properties")
+    //loadEnv()
+    echo "${BAZEL_TOOLS}"
     }
   }
 }
