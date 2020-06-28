@@ -1,14 +1,5 @@
 @Library('shared-lib')_
 
-def loadEnvironmentVariables(path){
-    def props = readProperties  file: path
-    keys= props.keySet()
-    for(key in keys) {
-        value = props["${key}"]
-        env."${key}" = "${value}"
-    }
-}
-
 podTemplate(yaml: """
 kind: Pod
 metadata:
@@ -33,7 +24,7 @@ node(POD_LABEL) {
   checkout scm
   stage('Env variables') {
     //loadEnvironmentVariables("staging.properties")
-    loadEnv()
+    loadEnv(envFile: ${env.WORKSPACE}/staging.properties")
     echo "${BAZEL_TOOLS}"
     }
   }
