@@ -12,7 +12,7 @@ def loadProperties() {
         Set<Object> keys = properties.keySet();
         for(Object k:keys) {
           String key = (String)k;
-          String value = (String) properties.getProperty(key);
+          String value = (String) properties.getProperties(key);
           env."${key}" = "${value}"
           //echo "Immediate one ${BAZEL_TOOLS}"
   }
