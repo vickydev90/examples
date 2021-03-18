@@ -4,7 +4,7 @@ import org.lab.*
 
 properties([
   parameters([
-    stringParam(name: '', defaultValue: '', description: 'environment folder name')
+    stringParam(name: 'folderName', defaultValue: '', description: 'environment folder name')
    ])
 ])
 
@@ -16,6 +16,7 @@ def containers = [
 def label = "jen-agent-${UUID.randomUUID().toString()}"
 
 def config = "staging.properties"
+String folderName = params.folderName
 
 podTemplate(label: label, containers: containers) {
     node(label) {
