@@ -1,5 +1,6 @@
 #!groovy
 @Library('shared-lib')_
+import org.lab.*
 
 def containers = [
     containerTemplate(name: 'jnlp', image: 'jenkins/jnlp-slave', ttyEnabled: true)
