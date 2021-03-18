@@ -2,9 +2,11 @@
 @Library('shared-lib')_
 import org.lab.*
 
-parameters {
-  string defaultValue: '', description: 'environment folder name', name: 'folderName', trim: false
-}
+properties([
+  parameters([
+    stringParam(name: '', defaultValue: '', description: 'environment folder name')
+   ])
+])
 
 
 def containers = [
