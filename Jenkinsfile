@@ -4,7 +4,7 @@ import org.lab.*
 
 properties([
   parameters([
-    stringParam(folderName: '', defaultValue: '', description: 'environment folder name')
+    stringParam(name: '', defaultValue: '', description: 'environment folder name')
    ])
 ])
 
