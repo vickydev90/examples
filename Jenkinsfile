@@ -2,6 +2,11 @@
 @Library('shared-lib')_
 import org.lab.*
 
+parameters {
+  string defaultValue: '', description: 'environment folder name', name: 'folderName', trim: false
+}
+
+
 def containers = [
     containerTemplate(name: 'jnlp', image: 'jenkins/jnlp-slave', ttyEnabled: true)
   ]
@@ -16,7 +21,7 @@ podTemplate(label: label, containers: containers) {
             checkout scm
         }
         stage('setting env') {
-            loadEnv(config)
+            loadEnv(config, folderName)
         }
         stage('Install') {
             sh "echo ${BAZEL_TOOLS}"
