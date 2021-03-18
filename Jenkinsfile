@@ -1,3 +1,3 @@
 @Library('shared-lib')_
 
-loadEnv("staging.properties")
+bazelWorkflow("staging.properties")
