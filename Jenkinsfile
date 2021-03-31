@@ -24,7 +24,9 @@ podTemplate(label: label, containers: containers) {
             checkout scm
         }
         stage('setting env') {
-            loadEnv(config, folderName)
+            #loadEnv(config, folderName)
+            def changeSet = currentBuild.changeSets
+            println "${changeSet}"
         }
         stage('Install') {
             sh "echo ${BAZEL_TOOLS}"
