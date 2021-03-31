@@ -29,7 +29,7 @@ podTemplate(label: label, containers: containers) {
             for (int i = 0; i < changeSet.size(); i++) 
             {
               def entries = changeSet[i].items;
-              println "${entries}"
+              sh "echo ${entries}"
             }
         }
         stage('Install') {
