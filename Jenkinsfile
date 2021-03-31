@@ -25,6 +25,7 @@ podTemplate(label: label, containers: containers) {
         }
         stage('setting env') {
             //loadEnv(config, folderName)
+            println(currentBuild.changeSets)
             def changeLogSets = currentBuild.changeSets
             for (int i = 0; i < changeLogSets.size(); i++) {
                 def entries = changeLogSets[i].items
