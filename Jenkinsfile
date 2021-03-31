@@ -26,7 +26,11 @@ podTemplate(label: label, containers: containers) {
         stage('setting env') {
             //loadEnv(config, folderName)
             def changeSet = currentBuild.changeSets
-            println "${changeSet}"
+            for (int i = 0; i < changeSet.size(); i++) 
+            {
+              def entries = changeSet[i].items;
+              println "${entries}"
+            }
         }
         stage('Install') {
             sh "echo ${BAZEL_TOOLS}"
