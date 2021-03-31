@@ -1,5 +1,5 @@
 load("//attributes:printer.bzl", "printer")
-#https://github.com/vickydev90/examples.giti
+#https://github.com/vickydev90/examples.git
 # Run 'bazel build :some_target' to print its information.
 printer(
     name = "some_target",
