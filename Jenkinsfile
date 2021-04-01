@@ -31,7 +31,7 @@ podTemplate(label: label, containers: containers) {
                 for (entry in changeLogSet.items) {
                     //println "${entry.commitId} by ${entry.author} on ${new Date(entry.timestamp)}: ${entry.msg}"
                     for (file in entry.affectedFiles) {
-                        echo " ${file.editType.name} ${file.path}.tokenize('/')[0]"
+                        echo " ${file.editType.name} ${file.path}".tokenize('/')[0]
                     }
                 }
             }     
