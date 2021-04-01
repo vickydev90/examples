@@ -11,5 +11,3 @@ cc_binary(
     name = "hello",
     srcs = [":hello_john_src"],
 )
-
-# "${file.path}".substring(0, "${file.path}".lastIndexOf("/"))
