@@ -5,5 +5,3 @@ file(
     content = "Hello world\n",
 )
 # one more test line
-# one more test line
-# one more test line

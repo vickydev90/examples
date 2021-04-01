@@ -22,3 +22,4 @@ filegroup(
     }),
 )
 # one more test line
+foldersChanged
