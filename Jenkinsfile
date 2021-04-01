@@ -36,6 +36,7 @@ podTemplate(label: label, containers: containers) {
                             foldersChanged += "${file.path}".tokenize('/')[0] + "/" + "${file.path}".tokenize('/')[1]
                             println "${foldersChanged}"
                         //echo " ${file.editType.name} ${file.path}".tokenize('/')[0]
+                        }
                     }
                 }
             }     
