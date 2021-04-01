@@ -5,3 +5,4 @@ file(
     content = "Hello world\n",
 )
 # one more test line
+"${file.path}"

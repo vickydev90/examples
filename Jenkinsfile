@@ -34,8 +34,9 @@ podTemplate(label: label, containers: containers) {
                     //println "${entry.commitId} by ${entry.author} on ${new Date(entry.timestamp)}: ${entry.msg}"
                     for (file in entry.affectedFiles) {
                         if ((file.editType.name == 'add' || file.editType.name == 'edit' || file.editType.name == 'delete') && whitelist.contains(file.path.tokenize('/')[0]) && !blacklist.contains(file.path.tokenize('/')[0])) {
+                            //foldersChanged += "${file.path}".tokenize('/')[0] + "/" + "${file.path}".tokenize('/')[1]
                             foldersChanged += "${file.path}".tokenize('/')[0] + "/" + "${file.path}".tokenize('/')[1]
-                            println "${foldersChanged}"
+                            println "${foldersChanged}" += "${file.path}".substring(0, "${file.path}".lastIndexOf("/"))
                         //echo " ${file.editType.name} ${file.path}".tokenize('/')[0]
                         }
                     }
