@@ -25,13 +25,17 @@ podTemplate(label: label, containers: containers) {
         }
         stage('setting env') {
             //loadEnv(config, folderName)
-
+            whitelist = ["rules"]
+            blacklist = ["tutorial"]
             def changeLogSets = currentBuild.changeSets
             for (changeLogSet in changeLogSets) {
                 for (entry in changeLogSet.items) {
                     //println "${entry.commitId} by ${entry.author} on ${new Date(entry.timestamp)}: ${entry.msg}"
                     for (file in entry.affectedFiles) {
-                        echo " ${file.editType.name} ${file.path}".tokenize('/')[0]
+                        if ((file.editType.name == 'add' || file.editType.name == 'edit' || file.editType.name == 'delete') && whitelist.contains(file.path.tokenize('/')[0]) && !blacklist.contains(file.path.tokenize('/')[0])) {
+                            foldersChanged += "${file.path}".tokenize('/')[0] + "/" + "${file.path}".tokenize('/')[1]
+                            println "${foldersChanged}"
+                        //echo " ${file.editType.name} ${file.path}".tokenize('/')[0]
                     }
                 }
             }     
