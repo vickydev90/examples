@@ -25,7 +25,7 @@ podTemplate(label: label, containers: containers) {
         }
         stage('setting env') {
             //loadEnv(config, folderName)
-            whitelist = ["rules", "android"]
+            whitelist = ["folders"]
             blacklist = ["tutorial"]
             foldersChanged = []
             def changeLogSets = currentBuild.changeSets
