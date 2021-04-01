@@ -27,6 +27,7 @@ podTemplate(label: label, containers: containers) {
             //loadEnv(config, folderName)
             whitelist = ["rules"]
             blacklist = ["tutorial"]
+            foldersChanged = []
             def changeLogSets = currentBuild.changeSets
             for (changeLogSet in changeLogSets) {
                 for (entry in changeLogSet.items) {
