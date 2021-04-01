@@ -25,13 +25,13 @@ podTemplate(label: label, containers: containers) {
         }
         stage('setting env') {
             //loadEnv(config, folderName)
-            println(currentBuild.changeSets)
+
             def changeLogSets = currentBuild.changeSets
             for (changeLogSet in changeLogSets) {
                 for (entry in changeLogSet.items) {
                     //println "${entry.commitId} by ${entry.author} on ${new Date(entry.timestamp)}: ${entry.msg}"
                     for (file in entry.affectedFiles) {
-                        echo "  ${file.editType.name} ${file.path}"
+                        echo " ${file.editType.name} ${file.path}.tokenize('/')[0]"
                     }
                 }
             }     

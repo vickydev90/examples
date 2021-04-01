@@ -10,5 +10,4 @@ printer(
 
 # This target is a dependency of 'some_target', so it is automatically analyzed
 # when you build 'some_target'.
-# test line
 printer(name = "other")
