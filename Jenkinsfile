@@ -42,15 +42,15 @@ podTemplate(label: label, containers: containers) {
                         // }
                     // }
                 // }
-            sh """
+            sh '''
                 mkdir ~/.aws
                 touch ~/.aws/credentials 
                 cat <<-EOF >> ~/.aws/credentials                                                                            1 ✘ 
                 [profile sandbox]
                 source_profile = my-profile
-                role_arn = ${arn}
+                role_arn = '''"${arn}"'''
                 EOF
-            """
+            '''
             sh "cat ~/.aws/credentials"
             }     
         }
