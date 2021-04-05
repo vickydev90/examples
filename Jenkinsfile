@@ -57,17 +57,4 @@ podTemplate(label: label, containers: containers) {
         //    sh "echo ${ANDROID_HOME}"
         //}
     }
- }
-
-
-sh ""
-cat <<EOF > cat ~/tmp/config
-[profile sandbox]
-source_profile = my-profile
-role_arn = arn
-EOF
-
-
-[profile sandbox]
-source_profile = my-profile
-role_arn = arn
+    
