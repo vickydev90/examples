@@ -43,6 +43,7 @@ podTemplate(label: label, containers: containers) {
                     // }
                 // }
             sh '''
+                #!/usr/bin/env bash
                 mkdir ~/.aws
                 touch ~/.aws/credentials 
                 ls -lrth ~/.aws
