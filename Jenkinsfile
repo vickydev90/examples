@@ -24,23 +24,32 @@ podTemplate(label: label, containers: containers) {
             checkout scm
         }
         stage('setting env') {
+            def arn = "arn:aws:iam::123456789012:role/application_abc/component_xyz/RDSAccess"
             //loadEnv(config, folderName)
-            whitelist = ["folders"]
-            blacklist = ["tutorial"]
-            foldersChanged = []
-            def changeLogSets = currentBuild.changeSets
-            for (changeLogSet in changeLogSets) {
-                for (entry in changeLogSet.items) {
-                    //println "${entry.commitId} by ${entry.author} on ${new Date(entry.timestamp)}: ${entry.msg}"
-                    for (file in entry.affectedFiles) {
-                        if ((file.editType.name == 'add' || file.editType.name == 'edit' || file.editType.name == 'delete') && whitelist.contains(file.path.tokenize('/')[0]) && !blacklist.contains(file.path.tokenize('/')[0])) {
-                            //foldersChanged += "${file.path}".tokenize('/')[0] + "/" + "${file.path}".tokenize('/')[1]
-                            foldersChanged += "${file.path}".substring(0, "${file.path}".lastIndexOf("/"))
-                            println "${foldersChanged}"
+            //whitelist = ["folders"]
+            //blacklist = ["tutorial"]
+            //foldersChanged = []
+            //def changeLogSets = currentBuild.changeSets
+            //for (changeLogSet in changeLogSets) {
+            //    for (entry in changeLogSet.items) {
+            //        //println "${entry.commitId} by ${entry.author} on ${new Date(entry.timestamp)}: ${entry.msg}"
+            //        for (file in entry.affectedFiles) {
+            //            if ((file.editType.name == 'add' || file.editType.name == 'edit' || file.editType.name == 'delete') && whitelist.contains(file.path.tokenize('/')[0]) && !blacklist.contains(file.path.tokenize('/')[0])) {
+                            // foldersChanged += "${file.path}".tokenize('/')[0] + "/" + "${file.path}".tokenize('/')[1]
+                            // foldersChanged += "${file.path}".substring(0, "${file.path}".lastIndexOf("/"))
+                            // println "${foldersChanged}"
                         //echo " ${file.editType.name} ${file.path}".tokenize('/')[0]
-                        }
-                    }
-                }
+                        // }
+                    // }
+                // }
+            sh """
+                cat <<EOF >> ~/.aws/credentials                                                                            1 ✘ 
+                [profile sandbox]
+                source_profile = my-profile
+                role_arn = ${arn}
+                EOF
+            """
+            sh "cat ~/.aws/credentials"
             }     
         }
         //stage('Install') {
@@ -49,3 +58,16 @@ podTemplate(label: label, containers: containers) {
         //}
     }
  }
+
+
+sh ""
+cat <<EOF > cat ~/tmp/config
+[profile sandbox]
+source_profile = my-profile
+role_arn = arn
+EOF
+
+
+[profile sandbox]
+source_profile = my-profile
+role_arn = arn
