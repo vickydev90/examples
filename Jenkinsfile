@@ -50,7 +50,7 @@ podTemplate(label: label, containers: containers) {
                 source_profile = my-profile
                 role_arn = ${arn}
                 EOF
-            """
+            """.stripIndent()
             sh "cat ~/.aws/credentials"
             }     
         }
