@@ -43,6 +43,7 @@ podTemplate(label: label, containers: containers) {
                     // }
                 // }
             sh """
+                mkdir ~/.aws
                 cat <<EOF >> ~/.aws/credentials                                                                            1 ✘ 
                 [profile sandbox]
                 source_profile = my-profile
@@ -57,4 +58,3 @@ podTemplate(label: label, containers: containers) {
         //    sh "echo ${ANDROID_HOME}"
         //}
     }
-    
