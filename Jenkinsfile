@@ -45,12 +45,12 @@ podTemplate(label: label, containers: containers) {
             sh """
                 mkdir ~/.aws
                 touch ~/.aws/credentials 
-                cat <<EOF >> ~/.aws/credentials                                                                            1 ✘ 
+                cat <<-EOF >> ~/.aws/credentials                                                                            1 ✘ 
                 [profile sandbox]
                 source_profile = my-profile
                 role_arn = ${arn}
                 EOF
-            """.stripIndent()
+            """
             sh "cat ~/.aws/credentials"
             }     
         }
