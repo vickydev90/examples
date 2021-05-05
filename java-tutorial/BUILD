@@ -1,4 +1,3 @@
-# load("@bazel_sonarqube//:defs.bzl", "sonarqube")
 load("@bazel_sonarqube//:defs.bzl", "sonarqube")
 load("@rules_java//java:defs.bzl", "java_binary")
 
